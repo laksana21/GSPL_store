@@ -23,12 +23,13 @@ from .models import Product
 
 class ProductViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows Product to be viewed or edited.
+    API endpoint that allows Product to be added, viewed, edited, or deleted.
     """
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     page_size = 10
 
+    # Get all product function
     def list(self, request):
       products = Product.objects.all()
       
@@ -57,6 +58,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 
       return paginator.get_paginated_response(serializer.data)
     
+    # Add new product function
     def create(self, request):
       if request.user.is_authenticated:
         data = JSONParser().parse(request)
@@ -80,6 +82,7 @@ class ProductViewSet(viewsets.ModelViewSet):
       else:
         return Response({'error': 'Invalid credentials'}, status=401)
 
+    # Get detail product function
     def retrieve(self, request, pk):
       try:
         product = Product.objects.get(pk=pk)
@@ -90,6 +93,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 
       return Response(serializer.data)
 
+    # Update product function
     def update(self, request, pk):
       if request.user.is_authenticated:
         data = JSONParser().parse(request)
@@ -119,6 +123,7 @@ class ProductViewSet(viewsets.ModelViewSet):
       else:
         return Response({'error': 'Invalid credentials'}, status=401)
 
+    # Delete product function
     def destroy(self, request, pk):
       if request.user.is_authenticated:
         try:
