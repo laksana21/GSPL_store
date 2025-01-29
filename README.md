@@ -155,10 +155,10 @@ Header
 
 | Query String | Type      | Description                       |
 | :----------- | :-------- | :-------------------------------- |
-| `name`       | `string`  | **Optional**. Search for product name |
-| `price`      | `integer` | **Optional**. Search for product price |
-| `price_min`  | `integer` | **Optional**. Search for product between price. Require `price_max` parameter |
-| `price_max`  | `integer` | **Optional**. Search for product between price. Require `price_min` parameter |
+| `name`       | `string`  | **Optional**. Search for products by name |
+| `price`      | `integer` | **Optional**. Search for products by price |
+| `price_min`  | `integer` | **Optional**. Search for products between prices. Require `price_max` parameter |
+| `price_max`  | `integer` | **Optional**. Search for products between prices. Require `price_min` parameter |
 | `page`       | `integer` | **Optional**. Page selector |
 | `page_size`  | `integer` | **Optional**. Items amount per page. Default is 10 |
 
